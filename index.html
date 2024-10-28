@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aarti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body, html {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(background.jpg) center/cover no-repeat;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 182, 193, 0.3); /* Light pink overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .overlay h1 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px #333;
+        }
+        .next-btn {
+            padding: 15px 30px;
+            font-size: 1em;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .next-btn:hover {
+            background-color: #ff1493;
+        }
+        .content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+        .content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .show {
+            display: flex;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+ 
+        
+        
+/* Rope style with a curved shape */
+.rope {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px; /* Adjust the width of the rope */
+    height: 200px; /* Length of the rope */
+    background-image: url(2223.jpg); /* Replace with your rope texture image path */
+    background-size: cover; /* Adjust to cover the entire element */
+    background-position: center; /* Center the image */
+    border-radius: 10px; /* Curves the rope */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
+    z-index: 1; /* Make sure the rope is above the background */
+}
+
+
+/* Hanging shape above the text */
+.hanging-photo {
+    position: fixed;
+    top: 100px; /* Adjust this value to position the photo below the rope */
+    border: 4px solid #ff69b4;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 250px;
+    background-image: url(baby.png); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    animation: growDown 1.5s ease forwards;
+   z-index: 100;
+}
+
+
+
+
+/* Typing and button styles */
+.typing h1 {
+    margin-top: 350px;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px #333;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3s steps(20, end) infinite, blink 0.6s step-end infinite alternate;
+}
+
+/* Animation for hanging-photo */
+/* Animation for hanging-photo */
+@keyframes growDown {
+    0% { 
+        transform: scaleY(0); 
+        opacity: 0;
+    }
+    100% { 
+        transform: scaleY(1); 
+        opacity: 1;
+    }
+}
+
+
+/* Typing effect */
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+
+
+
+
+
+.name {
+    color: #ff69b4;
+    text-shadow: 0 0 8px #ff69b4, 0 0 16px #ff69b4;
+    font-weight: bold;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 8px #ff69b4; }
+    to { text-shadow: 0 0 20px #ff1493, 0 0 30px #ff69b4; }
+}
+
+
+.decorative-name {
+    font-size: 1.5em; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    color: #ff69b4; /* Change the color to a decorative pink */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    
+    
+}
+
+.birth-date {
+    font-size: 1.2em; /* Adjust the font size */
+    color: #ffffff; /* Change the color to white */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    margin-top: 5px; /* Space between the name and date */
+    
+}
+
+.birthday-message {
+    font-family: 'Brush Script MT', cursive; /* Use a cursive font */
+    font-size: 4.5em; /* Increase the font size */
+    color: white; /* Use a decorative pink color */
+    text-align: center; /* Center align the text */
+    margin-top: 20px; /* Add space above the text */
+    width: 70%; /* Set the width to 70% of the parent */
+    margin-left: auto; /* Center the element */
+    margin-right: auto; /* Center the element */
+    animation: typing 4s steps(30, end), blink-caret .75s step-end infinite; /* Add typing effect */
+    white-space: nowrap; /* Prevent text wrapping for typing effect */
+    overflow: hidden; /* Hide overflowing text */
+    background: rgba(255, 20, 147, 0.5);
+    border-right: 3px solid #ff69b4; /* Create a blinking cursor effect */
+}
+
+
+
+
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .birthday-message {
+        font-size: 1.2em; /* Adjust font size for smaller screens */
+    }
+}
+
+
+.celebration-message {
+    font-family: 'Brush Script MT', cursive; /* Cursive font */
+    font-size: 1.6em; /* Increased font size */
+    color: #ff1493; /* Vibrant pink color */
+    text-align: center; /* Center align the text */
+    margin: 20px auto; /* Center the paragraph */
+    width: 80%; /* Width of the message */
+    padding: 15px; /* Add padding for better spacing */
+    background: rgba(255, 182, 193, 0.4); /* Light pink background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    animation: fadeIn 1.5s ease-in-out; /* Fade in effect */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+ .circle-image {
+    width: 130px; /* Diameter of the circle */
+    height: 130px; /* Diameter of the circle */
+    background-image: url(image2.jpg); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the circle */
+    background-position: center; /* Center the image within the circle */
+    border-radius: 50%; /* Make it a circle */
+    margin: 0 auto; /* Center the circle */
+    border: 4px solid #ff69b4; /* Optional border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.circle4-image {
+    width: 130px; /* Diameter of the circle */
+    height: 130px; /* Diameter of the circle */
+    background-image: url(love.jpg); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the circle */
+    background-position: center; /* Center the image within the circle */
+    border-radius: 50%; /* Make it a circle */
+    margin: 0 auto; /* Center the circle */
+    border: 4px solid #ff69b4; /* Optional border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.love-message {
+    font-family: 'Brush Script MT', cursive; /* Cursive font */
+    font-size: 1.6em; /* Increased font size */
+    color: #ff1493; /* Vibrant pink color */
+    text-align: center; /* Center align the text */
+    margin: 20px auto; /* Center the paragraph */
+    width: 80%; /* Width of the message */
+    padding: 15px; /* Add padding for better spacing */
+    background: rgba(255, 182, 193, 0.4); /* Light pink background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    animation: fadeIn 1.5s ease-in-out; /* Fade in effect */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#content4 {
+    background-image: url('romantic-background.jpg'); /* Replace with your background image path */
+    background-size: cover; /* Cover the whole section */
+    background-position: center; /* Center the background */
+    padding: 50px; /* Padding for spacing */
+    text-align: center; /* Center the text */
+    color: #fff; /* White text color for contrast */
+}
+
+.heart-container {
+    position: relative; /* For positioning elements */
+    padding: 20px; /* Add some padding */
+    background: rgba(255, 20, 147, 0.5); /* Pink background with transparency */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    max-width: 600px; /* Limit width for better readability */
+    margin: 10px auto; /* Center the container */
+}
+
+.final-message {
+    font-family: 'Dancing Script', cursive; /* Romantic cursive font */
+    font-size: 2em; /* Larger font size */
+    line-height: 1.4; /* Increase line height for readability */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.heart-sticker {
+    width: 80px; /* Size of the heart sticker */
+    position: absolute; /* Position it over the message */
+    bottom: -20px; /* Position below the message */
+    right: 10%; /* Position to the right */
+    animation: float 3s ease-in-out infinite; /* Add floating animation */
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Float effect */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="overlay typing">
+        <div class="rope"></div> <!-- Rope element -->
+        <div class="hanging-photo">
+            <div style="margin-top: 270px;">
+                <p class="decorative-name">Ms. Aarti Mahato</p>
+                <p class="birth-date"><b>Born:</b><br> October 29, 2001</p>
+            </div>
+        </div>
+        
+        <h1>Happy Birthday <span class="name">Baby</span></h1>
+        
+        <button class="next-btn" onclick="showNext(1)">Next</button>
+    </div>
+    
+    
+    
+    <div id="content1" class="content">
+        <img src="mal.png" alt="Aarti's Photo" style="border: 4px solid #ff69b4;">
+        <p class="celebration-message" style="background-color: #ff69b4; color: white;">Wishing you all the love and happiness in the world, on your special day and always!</p>
+        <button class="next-btn" onclick="showNext(2)">Next</button>  
+    </div>
+    
+    
+
+    <div id="content2" class="content">
+        <img src="baby.png" alt="Aarti's Photo" style="border:4px solid #ff69b4;;">
+        <p class="celebration-message">October 29th, a day the stars smile brighter, just for you! <br> Here's to your laughter, dreams, and everything beautiful!</p>
+        <button class="next-btn" onclick="showNext(3)">Next</button>
+    </div>
+    
+    <div id="content3" class="content">
+        <div class="circle-image"></div> <!-- Circle shape image -->
+        <p class="love-message">To my sweet princesis, my world is brighter with you in it. <br> Happy Birthday, my love!</p>
+        <button class="next-btn" onclick="showNext(4)">Next</button>
+    </div>
+    
+
+    <div id="content4" class="content">
+        <div class="circle4-image"></div> 
+        <div class="heart-container">
+            <p class="final-message">💖 Forever yours, I love you endlessly. 💖<br> Happy Birthday, bebo!</p>
+            
+        </div>
+        <button class="next-btn" onclick="restartPage()" style="margin-top: 15px;">Restart</button>
+    </div>
+    
+    <script>
+        let current = 0;
+    
+        function showNext(step) {
+            if (step === 1) {
+                document.querySelector('.overlay').style.display = 'none'; // Hide the overlay on the first click
+            }
+    
+            if (current) document.getElementById(`content${current}`).classList.remove('show');
+            if (step <= 4) {
+                document.getElementById(`content${step}`).classList.add('show');
+                current = step;
+                animateElements();
+            }
+        }
+    
+        function animateElements() {
+            const overlay = document.querySelector('.overlay');
+            overlay.style.animation = "none";
+            void overlay.offsetWidth; // Trigger reflow
+            overlay.style.animation = "fadeIn 1s ease";
+        }
+
+        function restartPage() {
+        location.reload(); // Reload the page to restart from the beginning
+    }
+
+    function animateElements() {
+        const overlay = document.querySelector('.overlay');
+        overlay.style.animation = "none";
+        void overlay.offsetWidth; // Trigger reflow
+        overlay.style.animation = "fadeIn 1s ease";
+    }
+    </script>
+
+
+
+    
+</body>
+</html>
